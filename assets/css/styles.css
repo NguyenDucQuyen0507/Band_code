@@ -1,0 +1,740 @@
+/* reset css */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*
+1.làm theo thứ tự
+từ trên xuống dưới
+từ ngoài vào trong
+2.Tổng quan đến chi tiết 
+ */
+/*
+1.Vị trí của nó
+2.kích thước(width , height)
+3.Màu sắc
+4.kiểu dáang 
+ */
+ /* common phần dùng chung */
+ .clear{
+     /* khi thẻ con dùng float thì thẻ cha sẽ không
+     ôm hết được vì thế nên dùng thẻ clear */
+    clear: both;
+ }
+.row::after{
+    /* tạo lớp giả để bao hết phần tử */
+    content: "";
+    display: block;
+    clear: both;
+}
+.mt-8{
+    /* cách top 8 px cho những thuộc tính chung */
+    margin-top: 8px !important;
+}
+.mt-16{
+    margin-top: 16px !important;
+}
+.pull-right{
+    float: right !important;
+}
+ /* màu chữ quan trọng thành màu trắng */
+ .text-white{
+     color: #fff !important;
+ }
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.col{
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.col-thrid{
+    width: 33.33333%;
+}
+.col-half{
+    /* để dùng cho 2 cột phần contact */
+    width: 50%;
+}
+/* dùng trong thẻ contact */
+.col-ful{
+    width: 100%;
+}
+.text-align{
+    text-align: center !important;
+}
+ 
+ html{
+    font-family: Arial, Helvetica, sans-serif;
+    /* thẻ này dùng để trang từ trên xuống khi nhấn vào các thẻ a */
+    scroll-behavior: smooth;
+ }
+/* main */
+ #main{
+  
+ }
+
+#header{
+    /* width: 100%; */
+    /* chiều cao của thanh header */
+    height: 46px;
+    background-color: black;
+    position: fixed;
+    top : 0;
+    left: 0;
+    right: 0 ;
+    z-index: 1;
+    /*trong mobile ẩn đi 4 thẻ nằm duois home  */
+    /* vì trong pc nó koh hiện các thẻ con nên h bỏ nó đi */
+    /* overflow: hidden; */
+    
+} 
+
+/* Chỉ tạo khối tới More dùng để bỏ search lên 
+thanh header */
+#nav{ 
+    display: inline-block;
+}
+/* bỏ đi dấu chấm trong thẻ li */
+#nav .subnav{
+    list-style-type: none;
+
+}
+/* Tạo khối lớp giả chỉ cho thẻ cấp 1 */
+ #nav >li{
+    display: inline-block;
+ }
+/* vì cấp 1 dã dùng inline-block bên các cấp
+còn lại bỏ đi inline-block */
+#nav li{
+    /* đưa lên một hàng ngang, giữ lại tính chất khối */
+    /* ta sẽ ẩn nó đi  vì nếu để thì các
+    phần tử con sẽ chịu ảnh hưởng nó sẽ xếp theo hàng ngang
+    mà phần tử con mình muốn là hình dọc */
+    /* display: inline-block; */
+    /* Tạo khối sau chữ More .phải làm bên phần tử More trước */
+    position: relative;
+}
+/* css riêng cho thẻ a là con trực tiếp
+ thẻ li con cua nav  là nó sẽ lấy thẻ Home
+ Band,Tour,Contact,More 
+ koh ảnh hưởng j đến thẻ subnav*/
+#nav >li >a {
+    color: #fff;
+    /* chữ trong cấp 1 là chữ in hoa */
+    text-transform: uppercase;
+}
+
+#nav li a {
+    
+    /* Bỏ đi dấu gạch chân */
+    text-decoration: none;
+    /* căn giữa chữ trong header */
+    line-height: 46px;
+    /* Căn các chữ cách nhau trên dưới =0, trái phải = 24 */
+    padding: 0 24px;
+    /* khi dơ chuột vào sẽ hiển màu nền to hết chữ */
+    display: block;
+}
+/* khi dơ chuột vào thì nó sẽ hiện lên
+3 phần tử con
+trước tiên phải cho nó ẩn đi trong phần
+#nav .subnav display : none */
+#nav li:hover .subnav{
+    display: block;
+}
+
+/* h mình chỉ cần hover vô thẻ cấp 1  */
+#nav >li:hover> a {
+    color: #000;
+    background-color: #ccc;
+}
+/*
+.subnav là con của nav , khỏi bị nhầm lẫn 
+.subnav là vì thẻ có class nên . 
+ */
+#nav .subnav{
+    /* Ẩn đi 3 tùy chọn con trong subnav */
+    /* muốn chọn được 3 cái trước tiên phải cho nó hiện lên */
+    /* display: none; */
+    position: absolute;
+    background-color: #fff;
+    /* tạo bóng đổ */
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.3 );
+    /* Bây h cho nó ẩn đi , r mới dơ chuột mới hiện ra */
+    display:none;
+    /* độ rộng tối thiểu */
+    min-width: 160px;
+    top: 100% ;
+    left: 0;
+}
+/* Do nãy mình đã tách riêng trực tiếp thẻ con ra 
+nên màu chữ sẽ khác h mình css lại */
+#nav .subnav a {
+    color: #000;
+    /* muốn thẻ con cách sang trái phải 
+    16px */
+    padding: 0 16px;
+}
+/* h mình chỉ cần dơ chuột chỗ nào
+chỗ đó sáng thì tạo lớp giả hover */
+#nav .subnav li:hover {
+    /* color: #000; */
+    background-color: #ccc;
+}
+
+/* tạo kiểu cho icon */
+#nav .nav-arrow-down{
+    font-size: 14px;
+    padding-left: 4px;
+}
+/* js mobile khi bị mất menu 3 gạch thì ta css lại, vì thẻ cha()header đã 
+có position : flex */
+#header .mobile-menu-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+/* nút search */
+/* đây là div chứa icon đi theo nó */
+#header .mobile-menu-btn,
+#header .search-btn{
+    float: right;
+    padding: 0 21px ;
+    /* cursor: pointer; */
+}
+#header .menu-icon,
+#header .search-icon{
+    color:#fff;
+    font-size: 20px;
+    line-height: 46px;
+}
+#header .mobile-menu-btn:hover{
+    background-color: #ccc;
+
+}
+
+/* hoặc cussor(hình dạnh bàn tay) bỏ dưới lớp giả sẽ hay hơn */
+#header .search-btn:hover{
+    background-color: red;
+    cursor: pointer;
+}
+#slider{
+    /* Thuộc tính này lấy trục slider làm trục cố định 
+    giúp cho Absloute di chuyển được */
+    position: relative;
+    /* chiều cao tối thiểu của slider */
+    /* min-height: 1500px;  */
+    margin-top: 46px;
+    /* nghĩa là chiều cao sẽ bằng 1/2 chiều rộng */
+    /* background-color: green; */
+    padding-top: 50%;
+    background: url('/assets/img/slider1/anh1.jpg') top center / cover no-repeat;
+
+
+}
+
+#slider .text-content{
+    /* thuộc tính này bắt buộc phải có relative là thẻ cha
+    giúp nó có thể di chuyển được vào thuộc tính
+    slider mà không làm thay đổi kích thước */
+    position: absolute;
+    /* vì là thẻ con của slider nên 
+    bottom : 0 là nó sẽ nằm dưới cùng của slider */
+    color: #fff;
+    bottom: 47px;
+    /* Căn chữ nằm giữa
+    c1 */
+    /* left: 50%;
+    transform: translateX(-50%);
+    text-align: center; */
+    /* cách 2*/
+    width: 100%;
+    text-align: center;
+    /* c3 */
+    /* right: 0;
+    left: 0;
+    text-align: center; */
+}
+
+#slider .text-heading{
+    /* giảm độ đậm */
+    font-weight: normal;
+    text-shadow: 0 3px 1px #000;
+}
+
+#slider .text-desription{
+    margin-top: 25px;
+    /* sau hết nó sẽ phát sinh 1 lỗi là
+    cái thanh header mặc dù đã fixed
+    nhưng vì chiều cao của anh cao hơn
+    nên header mình phải thêm Z-index: 1 */
+    /* tạo bóng đổ cho chữ để dễ nhìn */
+    text-shadow: 0 3px 1px #000;
+}
+
+#content{
+
+    
+} 
+
+#content .content-section{
+    /* độ rộng chứa các chữ 1. */
+    width: 800px;
+    /* * t thêm max-width cho phù hợp với toàn thiết bị */
+    max-width: 100%;
+    /* cho tất cả nằm giữa 2.
+    khong dùng center dc vì đây là thẻ cha
+    dùng dc nhưng nó sẽ khoogn ngay hàng */
+    margin-left: auto;
+    margin-right: auto;
+    /* dùng padding vì là phần tử con của content 4. */
+    /* css cho tất cả các phần tử có thuộc tính chung */
+    padding: 64px 0 112px;
+    /* trên ipad nó sẽ hở ra bên hông vì mr -8,ml -8 nên ta css cho chữ */
+    padding-right: 16px;
+    padding-left: 16px;
+
+}
+
+#content .section-heading , .section-sub-heading{
+    /* cho 2 thằng này căn giữa 3. */
+    text-align: center;
+}
+
+#content .section-heading{
+    /* 5. */
+    font-size: 30px;
+    /* 7. */
+    font-weight: 500px;
+    /* khoảng cách giữa các chữ 8. */
+    letter-spacing: 4px;
+}
+
+#content .section-sub-heading{
+    /* 6. */
+    font-size: 15px;
+    /* 8. */
+    margin-top: 25px;
+    /* In nghien chữ 10. */
+    font-style: italic;
+    /* làm mờ chữ 11. */
+    opacity: 0.6;
+}
+#content .about-text{
+    /* 9. */
+    margin-top: 25px;
+    font-size: 15px;
+    /* Căn 2 bên chữ thẳng hàng bên mobile 12. */
+    text-align: justify;
+    /* chiều cao của các dòng 13.  */
+    line-height: 1.4;
+    /* đối với Tv thif 1.6 */
+    
+}
+
+#content .member-list{
+    /* .2 */
+    margin-top: 48px;
+}
+#content .member-item{
+    /* 1 */
+    /* float: left; */
+    /* 2.1 */
+    /* padding-top: 48px; */
+    /* cho độ rộng 3 ảnh bằng nhau 3.  */
+    /* width: calc(100% / 3); */
+    /* hoac  */
+    /* width: 33,3333%; */
+    /*8 bây h tên nó sẽ không căn giữa nữa
+    phải chuyển text-align lên cho nó kế thừa các phần
+    tử con của nó  */
+    /* text-align: center; */
+    /* ta có độ rrongj và float left đã được col và col-thrid nên cũng xóa */
+    /* text center cũng xóa */
+}
+
+#content .name{
+    /* 4 */
+    font-size: 15px;
+    /* 5 */
+    /* text-align: center; */
+}
+
+#content .member-img{
+    /* 6 */
+    margin-top: 15px;
+    /* 7 */
+    width: 154px;
+    /* 9 tạo góc bo tròn */
+    border-radius: 4px;
+}
+
+/* tour-section */
+
+.tour-section{
+    /* màu nền 1. */
+    background-color: #000;
+}
+/*  2. cách hiện chữ trắng 
+cách hay hơn là css một thuộc tính
+text-white : #fff !important */
+/* .tour-section .section-heading, .section-sub-heading{
+    color: #fff;
+} */
+
+.tickets-list{
+    /* 3. */
+    background-color: #fff;
+    /*4. cách trên 40px */
+    margin-top: 40px;
+    
+    
+}
+.tickets-list li{
+    /* 5. */
+    font-size: 15px;
+    /* 6. trên dưới trái phải của chữ */
+    padding:11px 16px;
+    /* 7. đường kẻ dưới 3 dòng  */
+    border-bottom: 1px #ddd solid;
+    /* 8. màu chữ */
+    color: #757575;
+    /* xóa bỏ 3 chấm */
+    list-style-type: none;
+}
+.tickets-list .sold-out{
+    /*9. màu nền với chữ */
+    background-color: #f44336;
+    color: #fff;
+    /* 10. cái chữ đó cách cái màu nền
+    trên dưới trái phải */
+    padding: 4px 8px;
+    /* 11. cách trái 16px */
+    margin-left: 16px;
+}
+.tickets-list .quantity{
+    /* 12. cho số 3 nằm  bên phải */
+    float: right;
+    /* 13.cho màu nền số 3 màu đen */
+    background-color: #000;
+    /*14. độ rộng màu nền */
+    width: 24px;
+    /*15. bẻ cong hình tròn */
+    border-radius: 50%;
+    padding: 5px 6px;
+    /* margin-left: 16px; */
+    color: #fff;
+    text-align: center;
+    line-height: 14px;
+}
+/* tour-place */
+.place-list{
+    /* 1 */
+    /* margin-top: 32px; */
+    /* vì 3 thẻ khối không bằng ra 2 bên 
+    nên ta phải dịch ra 2 bên 
+    nên ta dùng - trên, traisphai, dưới*/
+    /* margin:32px -8px 0px  ; */
+    /*15 ta css toàn bộ xuống */
+    /* padding-bottom: 48px; */
+    /* vì ta đã css row -8 px nên h ta bỏ nó đi  */
+    margin-top: 16px;
+    /* h ta bỏ 48px vì có 3 thuộc tính tương tự  */
+    /* margin-bottom: 48px; */
+
+}
+.place-item{
+    /*2. cho 3 hình khối chứa ảnh nằm ngang */
+    /* float: left; */
+    /*3. cân bằng 3 khối bằng nhau */
+    /* width: calc(100% /3); */
+    /*4. 3 khối cách nhau */
+    /* padding: 0 8px; */
+    /* ta đã css col là right với trái phải là 8 h ta bỏ đi */
+    /* h t cũng css độ rộng 3 ảnh nên cũng xóa */
+
+}
+.place-img{
+    /*5 do hình khối của chúng ta chỉ 256px
+    mà hình ảnh tới 400 300 px nó sẽ rộng ra bên ngoài
+    nên ta phải cho độ rộng của ảnh =100%
+    là nó sẽ nằm bằng với hình khối ban đầu */
+    width: 100%;
+    /*7. bỏ khoảng đen giữa ảnh và body */
+    display: block;
+}
+.place-img:hover{
+    /*6. giảm độ trong suốt của ảnh */
+    opacity: 0.6;
+}
+.place-body{
+    /*9. căn lề 4 hướng */
+    padding: 14px;
+    /* 8. */
+    background-color: #fff;
+    font-size: 15px;
+}
+.place-heading{
+    font-size: 15px;
+    /*10. giảm đọ đậm */
+    font-weight: 500px;
+}
+.place-time{
+    margin-top: 14px;
+    color: #757575;
+}
+.place-dsc{
+    margin-top: 13px;
+    /* 11 tăng chiều cao của 2 dòng 
+    đối với tiếng anh*/
+    line-height:1.4 ;
+}
+.place-buy-btn{
+    /*  */
+    color: #fff;
+    background-color: #000;
+    /*12 bỏ dấu gạch chân */
+    text-decoration: none;
+    padding: 11px 16px;
+    /* 13 vì là tính chất khối nên ta sử dụng 
+    inline-block để đưa nó xuốn */
+    display: inline-block;
+    margin-top: 15px;
+    text-align: center;
+}
+.place-buy-btn:hover{
+    /*14 ta css khi đưua chuột vào */
+    background-color:#ccc ;
+    color: #000;
+}
+#footer{
+
+}
+
+
+/*tạo giao diện khi nhấn buton script */
+
+.modal{
+    /* 1. tạo một lớp bao phủ hết main
+    mà không cần relative ở thẻ cha */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* lúc đầu nó sẽ màu trắng ta không 
+    nhìn thấy được nên bây h ta rgba là
+    lớp phủ xuyên */
+    /* background-color: rgba(0, 0, 0, 0.3 ); */
+    /*2. cho nó nằm giữa */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    /* do ta chưa làm js nên muốn nó ẩn đi
+    thì display : none;flex */
+}
+.modal-contain{
+    background-color: #fff;
+    /* 3.đọ rộng của thanh mua vé */
+    width: 900px;
+    min-height: 200px;
+    /*8. h tạo nút x nằm bên trái thì ta phải
+    relative ở thẻ cha */
+    position: relative;
+    /* cuối cùng ta cho nó lớn theo trình duyệt
+    nến ta trừ mỗi bên 16px */
+    max-width: calc(100% -32px);
+    /*  */
+    animation: modalfadeIn ease 0.5s ;
+}
+.modal-header{
+    /*4.tạo màu cho header  */
+    background: #009688;
+    height: 130px;
+    /* 5. bây giờ ta cho tikets nằm giữa thanh header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*6. chỉnh kiểu chữ */
+    font-size: 30px;
+    color: #fff;
+}
+/*7. h ta css cho icon tickets */
+.modal-heading-icon{
+    margin-right: 16px;
+}
+/*8.1 cho nút x nằm bên trái */
+.modal-close{
+    /* the cha là thẻ modal-content */
+    position: absolute;
+    right: 0;
+    top:0;
+    color: #fff;
+    /*9 không dùng top right vì nó sẽ làm cho icon
+    rất bé, tăng khả năng bấm vào sẽ trượt,
+    dùng padding nó sẽ có lớp xung quanh  */
+    padding: 12px;
+    /* 10. tạo hình bàn tay cho nút close */
+    cursor:pointer ;
+    opacity: 1;
+}
+.modal-body{
+    /* 11.  */
+    padding:16px ;
+}
+/*12. mỗi thằng một hàng */
+.modal-label{
+    display: block;
+    font-size: 15px;
+    /*14. khoang cách chữ  */
+    margin-bottom: 14px;
+    
+}
+/*13. h ta css cho modal-input */
+.modal-input{
+    border: 1px #ccc solid;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    /*15. khoang cách ô */
+    margin-bottom: 24px;
+}
+/*16. h ta css cbho the pay */
+#buy-tickets{
+    background: #009688;
+    /*17. vì nút tạo là button nên nó sẽ có khung
+    nên ta bỏ nó đi */
+    border: none;
+    color: #ddd;
+    /*18. muốn cho nó dài ra hết thì */
+    width: 100%;
+    font-size: 15px;
+    /* 19. h cho chữ in hoa hết */
+    text-transform: uppercase;
+    padding: 18px;
+}
+/*20. h ta :hover cho thẻ pay vì khi dơ chuột vào nó sẽ chuyển màu */
+#buy-tickets:hover{
+    /* ta dùng opcity cũng dc */
+    opacity: 0.6;
+    cursor: pointer;
+}
+/* 21. h ta css cho footer */
+.modal-footer{
+    padding: 16px;
+    float: right;
+}
+.modal-footer a{
+    color: #2196F3;
+}
+/* tạo thẻ open để javascript */
+.modal.open{
+    display: flex;
+}
+/* làm chuyển động từ trên xuống cho javascript */
+@keyframes modalfadeIn{
+    /* từ */
+    /* từ từ rõ lên là opacity */
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    /* đến */
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+/* h lên tên modalfadeIn lên thẻ cần hiện thị là modal-container */
+
+/* contac-form */
+.contact-contain{
+    /* 1. cách top */
+    margin-top: 48px;
+}
+.contact-info{
+    /* 2. kích cowxw chữ bên trái */
+    font-size: 18px;
+    /*5 chiều cao dao động từ 1.4 dến 1.6  */
+    line-height: 1.5;
+}
+/* khoảng cách các icon với chữ */
+.contact-info i{
+    /* 3 */
+    width: 30px;
+    /*4 lúc đầu nó sẽ khong cách ra vì chưa có inline */
+    /* nâng cao i[class*="ti-"] */
+    display: inline-block;
+}
+/* t lấy màu  */
+.contact-info a{
+    color: #8e5fef;
+    opacity :0.8; 
+}
+.contact-info a:hover{
+    opacity: 1;
+}
+.contact-form{
+    font-size: 15px;
+}
+.contact-form .form-control{
+    /* 6.điều chỉnh ô to ra */
+    padding: 10px ;
+    border: 1px #ccc solid;
+    width: 100%;
+}
+.contact-form .form-submit-btn{
+    /* 7. */
+    background-color:#000 ;
+    color: #ddd;
+    border: 1px #000 solid;
+    display: inline-block;
+    text-align: center;
+    padding: 11px 16px;
+    /* trên pull-right đã có thuộc tính float: right */
+    /* float: right; */
+    /* trên iphone nút SEND bị lỗi nhỏ thanh chứa nó */
+    appearance: none;
+    -webkit-appearance:none ;
+}
+.form-submit-btn:hover{
+    /* 8 tạo lớp giả */
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+}
+/* map-section */
+.map-section img{
+    /* là khi phòn to hay thu nhỏ web thì 
+    nó vẫn giữ nguyên kích thước */
+    width: 100%;
+}
+/* footer */
+#footer{
+    padding: 64px 16px ;
+    text-align: center;
+}
+#footer .social-list{
+    font-size: 24px;
+}
+#footer .social-list a{
+    color: rgba(0, 0, 0, 0.6 );
+    /* bỏ dấu gạch chân */
+    text-decoration: none;
+}
+#footer .coppyright a:hover,
+#footer .social-list a:hover{
+    color: rgba(0, 0, 0, 0.4 );
+}
+#footer .coppyright{
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6 );
+}
+#footer .coppyright a{
+    color: rgba(0, 0, 0, 0.6 );
+}
+

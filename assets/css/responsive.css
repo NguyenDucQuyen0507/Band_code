@@ -1,0 +1,108 @@
+
+/* Tablet */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    
+}
+/* PC */
+@media only screen and (min-width: 64em ){   
+}
+
+/* h ta css nút buy tikets trên mobile và tablet chung */
+@media only screen and (max-width: 63.9375em) {
+    .place-buy-btn{
+        padding: 15px 16px;
+    }    
+    #nav .subnav a{
+        /* line-height: 38px; */
+        padding: 5px 35px;
+    }
+    /*  */
+     .contact-info{
+        line-height: 2;
+    }
+    /* định dạng chữ khi trên iphone */
+    .contact-submit-btn{
+        font-size: 18px;
+    }
+    .contact-form .form-control{
+        /* padding: 10px 0; */
+        font-size: 17px;
+    }
+      /* các icon của footer to ra */
+    #footer .social-list{
+        font-size: 48px;
+    }
+    #footer .social-list a{
+        margin:0 8px ;
+    }
+    #footer .coppyright a{
+        padding: 12px 0;
+        display: inline-block;
+    }
+    /* các phần tử con của More cách trên dưới */
+ 
+}
+
+/* Mobile */
+@media only screen and (max-width: 46.1875em) {
+    /* làm cho ảnh chứa nút buy thành hàng dọc */
+    /* và độ rông của nút send dài hết màn hình */
+    .s-full-width, .s-col-ful{
+        width: 100% !important;
+    }
+    /* kc giữa dòng name và email */
+    .s-mt-8{
+        margin-top: 8px !important;
+    }
+    #header{
+        overflow: hidden;
+    }
+      /* Hiện nút 3 gạch */
+    #header .mobile-menu-btn{
+        display: block;
+    }
+
+    #header .search-btn{
+    /*2 ẩn đi nút tìm kiếm */
+        display: none;
+    }
+   #nav{
+       display: block;
+   }
+
+    #nav > li {
+    /*1 Hiển thị các thanh nằm theo chìu dọc  */
+    display: block;
+    }
+    #nav li a {
+        padding: 1px 24px;
+    }
+    
+    /* h ta bỏ tùy chọn absolute vì nó làm ẩn tùy chọn con đi */
+    #nav .subnav{
+        position: initial;
+        background-color: #333;
+    }
+    #nav .subnav a{
+        color: #fff;
+        padding: 5px 41px;
+    }
+    /* chỉ lấy thẻ con dầu tiên trong li */
+    #nav > li:first-child{
+        display: inline-block;
+    }
+    /* h ta css cho ảnh nằm chiều dọc để koh bị lỗi hở viền */
+    #content .member-item{
+        width: 100%; 
+        /* các ảnh cách ra 30px */
+        margin-top: 30px;
+    }
+    #content .member-img{
+        /* width: 60%; */
+    }
+    /* khoảng cách giũa khối địa chỉ với khối input */
+    .contact-form{
+        margin-top: 32px;
+    }
+  
+}
